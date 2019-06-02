@@ -1,0 +1,27 @@
+﻿@page "/"
+
+<h1>Reset Password</h1>
+<h2>@result</h2>
+<EditForm onvalidsubmit="@submit" model="@model">
+    <DataAnnotationsValidator />
+    <label>New Password</label>
+    <InputText class="form-control" bind-Value="@model.NewPassword" />
+    <ValidationMessage For="@(() => model.NewPassword)" />
+    <label>Confirm New Password</label>
+    <InputText class="form-control" bind-Value="@model.ConfirmNewPassword" />
+    <ValidationMessage For="@(() => model.ConfirmNewPassword)" />
+    <button class="btn btn-primary" type="submit">submit</button>
+</EditForm>
+
+@functions
+{
+    private ResetPasswordModel model = new ResetPasswordModel();
+    private string result = "";
+
+    public void submit()
+    {
+        result = "Form Submitted";
+        StateHasChanged();
+    }
+
+}
